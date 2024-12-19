@@ -1,0 +1,44 @@
+<mat-drawer-container class="example-container" autosize>
+   <mat-drawer #drawer class="example-sidenav" mode="side" [opened]="true">
+      <div class="drawer-header">
+         <!-- แสดง logo ตลอดเวลา -->
+         <img src="./assets/logo.png" alt="Logo" class="logo" />
+         <h1 class="app-title">Transport</h1> <!-- แสดงเสมอ -->
+      </div>
+
+      <div class="search-container">
+         <mat-icon class="search-icon">search</mat-icon>
+         <input type="text" placeholder="ค้นหา" class="search-input" />
+      </div>
+
+      <div class="main-menu">
+         <ul class="menu-list">
+            <li class="menu-item" [class.active]="activeMenu === 'home'" (click)="setActiveMenu('home')">
+               <img src="./assets/Home.png" alt="Home" class="menu-icon" />
+               <span>หน้าหลัก</span>
+            </li>
+            <li class="menu-item" [class.active]="activeMenu === 'check-parcel'" (click)="setActiveMenu('check-parcel')">
+               <img src="./assets/Check-parcel-list.png" alt="Check Parcel List" class="menu-icon" />
+               <span>เช็ครายการพัสดุ</span>
+            </li>
+            <li class="menu-item" [class.active]="activeMenu === 'program-history'" (click)="setActiveMenu('program-history')">
+               <img src="./assets/Program History.png" alt="Program History" class="menu-icon" />
+               <span>ประวัติรายการ</span>
+            </li>
+         </ul>
+      </div>
+      
+      <div class="menu-footer">
+         <div class="user-info">
+            <img src="./assets/G2.png" alt="User Avatar" class="user-icon" />
+            <div class="user-details">
+               <p class="user-name">ชัยกร</p>
+               <p class="user-role">สมาชิก</p>
+            </div>
+            <div class="logout-icon">
+               <i class="material-icons">logout</i>
+            </div>
+         </div>
+      </div>       
+   </mat-drawer>
+</mat-drawer-container>

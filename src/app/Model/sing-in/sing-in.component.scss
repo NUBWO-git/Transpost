@@ -1,0 +1,177 @@
+/* ส่วน Container หลัก */
+.sign-in-container {
+   max-width: 900px;
+   margin: 0 auto;
+   padding: 50px;
+   font-family: Arial, sans-serif;
+}
+
+/* Header */
+.sign-in-header {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-bottom: 30px;
+}
+
+.sign-in-header h2 {
+   font-size: 24px;
+   font-weight: normal;
+}
+
+.navigation-links {
+   font-size: 14px;
+}
+
+/* สไตล์สำหรับลิงก์ "หน้าจัดการหลัก" */
+.navigation-links .main-link {
+   color: #6c757d; /* สีเทา */
+   text-decoration: none;
+   cursor: pointer;
+}
+
+.navigation-links .main-link:hover {
+   text-decoration: underline;
+}
+
+/* สไตล์สำหรับลิงก์ "สมัครสมาชิก" */
+.navigation-links .register-link {
+   color: #FF6600; /* สีส้ม */
+   text-decoration: none;
+   cursor: pointer;
+}
+
+.navigation-links .register-link:hover {
+   text-decoration: underline;
+}
+/* ส่วนเนื้อหา */
+.sign-in-content {
+   display: flex;
+   background: #ffffff;
+   border: 1px solid #ddd;
+   border-radius: 8px;
+   padding: 50px;
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ภาพ */
+.image-section {
+   flex: 1;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 10px;
+}
+
+.image-section img {
+   max-width: 100%;
+   height: auto;
+   border-radius: 8px;
+}
+
+/* ฟอร์ม */
+.form-section {
+   flex: 1;
+   text-align: center;
+   padding: 0 20px;
+}
+
+.form-section h3 {
+   font-size: 20px;
+   margin-bottom: 20px;
+}
+
+.form-section h3 span {
+   color: #FF6600;
+}
+
+/* ปุ่มโซเชียล */
+.social-buttons {
+   display: flex;
+   justify-content: center;
+   gap: 10px;
+   margin-bottom: 20px;
+}
+
+.social-buttons button {
+   border: none;
+   background: none;
+   cursor: pointer;
+}
+
+.social-buttons img {
+   width: 40px;
+   height: 40px;
+}
+
+/* ฟอร์มการเข้าสู่ระบบ */
+form {
+   display: flex;
+   flex-direction: column;
+}
+
+.form-input {
+   width: 100%;
+   margin-bottom: 10px;
+   padding: 10px;
+   border: 1px solid #ccc;
+   border-radius: 4px;
+}
+
+.form-footer {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-bottom: 10px;
+}
+
+.remember-me {
+   display: flex;
+   align-items: center;
+   gap: 5px;
+}
+
+.remember-me label {
+   font-size: 14px;
+}
+
+.forgot-password {
+   font-size: 14px;
+   color: #FF6600;
+   text-decoration: none;
+}
+
+.forgot-password:hover {
+   text-decoration: underline;
+}
+
+/* ปุ่ม Submit */
+.submit-btn {
+   width: 106%;
+   padding: 10px;
+   background-color: #003366;
+   color: #fff;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+   font-size: 16px;
+}
+
+.submit-btn:hover {
+   background-color: #0056b3;
+}
+
+/* ลิงก์ด้านล่าง */
+p {
+   font-size: 14px;
+   color: #6c757d;
+}
+
+p a {
+   color: #FF6600;
+   text-decoration: none;
+}
+
+p a:hover {
+   text-decoration: underline;
+}

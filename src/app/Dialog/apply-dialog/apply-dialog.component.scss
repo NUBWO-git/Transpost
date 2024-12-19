@@ -1,0 +1,24 @@
+.close-button {
+   background: none;
+   border: none;
+   color: #808080;
+   cursor: pointer;
+   font-size: 24px;
+}
+
+.close-button:hover {
+   color: #FF6600;
+}
+
+.close-button mat-icon {
+   font-size: 24px;
+}
+
+.dialog-content-text ul {
+   list-style-type: none; /* ลบจุดหรือสัญลักษณ์หน้าไอเท็ม */
+   padding-left: 0; /* ลบการเยื้อง */
+}
+
+.dialog-content-text li {
+   padding-left: 0; /* กำหนดให้ไม่มีการเยื้องเพิ่มเติม */
+}

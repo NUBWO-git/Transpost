@@ -1,0 +1,51 @@
+<div class="sign-in-container">
+   <!-- ส่วน Header -->
+   <div class="sign-in-header">
+      <h2>เข้าสู่ระบบ</h2>
+      <div class="navigation-links">
+         <a routerLink="/welcome_Transpost/homepage" class="main-link">หน้าหลัก</a> /
+         <a routerLink="/welcome_Transpost/apply" class="register-link" (click)="navigateToApply()">สมัครสมาชิก</a>
+      </div>
+   </div>
+
+   <!-- ส่วนเนื้อหาหลัก -->
+   <div class="sign-in-content">
+      <!-- ส่วนภาพ -->
+      <div class="image-section">
+         <img src="./assets/P-4.png" alt="Mobile Map Illustration" />
+      </div>
+
+      <!-- ส่วนฟอร์ม -->
+      <div class="form-section">
+         <h3>เข้าสู่ระบบกับ <span>Transport</span></h3>
+
+         <!-- ปุ่มโซเชียลมีเดีย -->
+         <div class="social-buttons">
+            <button class="facebook-btn">
+               <img src="./assets/facebook.png" alt="Facebook Login" />
+            </button>
+            <button class="google-btn">
+               <img src="./assets/google.png" alt="Google Login" />
+            </button>
+         </div>
+
+         <!-- ฟอร์มการเข้าสู่ระบบ -->
+         <form>
+            <input type="email" placeholder="กรอกอีเมลของคุณ" class="form-input" />
+            <input type="password" placeholder="กรอกรหัสผ่านของคุณ" class="form-input" />
+            <div class="form-footer">
+               <div class="remember-me">
+                  <input type="checkbox" id="remember" />
+                  <label for="remember">จดจำข้อมูลฉันไว้</label>
+               </div>
+               <a href="#" class="forgot-password">ลืมรหัสผ่าน?</a>
+            </div>          
+            <button type="submit" class="submit-btn">เข้าสู่ระบบ</button>
+         </form>
+
+         <!-- ลิงก์เข้าสู่ระบบ -->
+         <p>มีบัญชีอยู่แล้ว? <a href="/login">เข้าสู่ระบบ</a></p>
+      </div>
+   </div>
+</div>
+

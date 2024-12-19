@@ -1,0 +1,54 @@
+<div class="container">
+   <div class="header">
+      <h2>สมัครสมาชิก</h2>
+      <div class="navigation-links">
+         <a routerLink="/welcome_Transpost/homepage" class="main-link">หน้าหลัก</a> /
+         <a routerLink="/welcome_Transpost/apply" class="register-link">สมัครสมาชิก</a>
+      </div>
+   </div>
+
+   <div class="form-container">
+      <div class="form-section">
+         <h3>เข้าสู่ระบบกับ <span>Transpost</span></h3>
+      </div>
+      <form (ngSubmit)="register()" #registerForm="ngForm">
+         <div class="form-group">
+            <label for="name">ชื่อ-นามสกุล</label>
+            <input type="text" id="name" name="name" [(ngModel)]="username" placeholder="กรอกชื่อ-นามสกุลของคุณ" required />
+         </div>
+      
+         <div class="form-group">
+            <label for="email">อีเมล</label>
+            <input type="email" id="email" name="email" [(ngModel)]="email" placeholder="กรอกอีเมลของคุณ" required />
+         </div>
+      
+         <div class="form-group">
+            <label for="password">รหัสผ่าน</label>
+            <input type="password" id="password" name="password" [(ngModel)]="password" placeholder="กรอกรหัสผ่านของคุณ" required />
+            <p class="hint">*ตัวพิมพ์ใหญ่ 1 ตัว ตัวพิมพ์เล็ก 1 ตัว ตัวเลข 1 ตัว สัญลักษณ์พิเศษ 1 ตัว</p>
+         </div>
+      
+         <div class="form-group">
+            <label for="confirm-password">ยืนยันรหัสผ่าน</label>
+            <input type="password" id="confirm-password" name="confirm-password" [(ngModel)]="confirmPassword" placeholder="กรอกรหัสผ่านยืนยันของคุณ" required />
+         </div>
+      
+         <div class="form-group otp-group">
+            <button type="button" (click)="requestOtp()" class="otp-btn full-width" [disabled]="otpSent">ขอ OTP</button>
+            <input type="text" id="otp" name="otp" [(ngModel)]="otp" placeholder="กรอก OTP ของคุณ" required />
+         </div>
+      
+         <div class="form-group terms">
+            <input type="checkbox" id="terms" name="terms" [(ngModel)]="termsAccepted" required />
+            <label for="terms">
+               <span>ข้าพเจ้าอ่าน และยอมรับ</span>
+               <a href="#">ข้อตกลงการใช้บริการ</a>
+               <span>และ</span>
+               <a href="#" (click)="openDialog(); $event.preventDefault()">นโยบายความเป็นส่วนตัว</a>
+            </label>
+         </div>
+      
+         <button type="submit" class="submit-btn" [disabled]="!registerForm.valid || !otpValid || !termsAccepted">สมัครสมาชิก</button>
+      </form>
+   </div>
+</div>

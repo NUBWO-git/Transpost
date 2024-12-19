@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.toolbar {
+   background-color: #f5f5f5;
+   color: #333;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 0 16px;
+}
+
+.example-spacer {
+   flex: 1;
+}
+
+.search-input {
+   width: 270px;
+   padding: 2px 14px;
+   border-radius: 25px;
+   border: 1px solid #d3d3d3;
+   outline: none;
+   font-size: 14px;
+   background-color: #fff;
+   transition: border-color 0.3s;
+}
+
+.search-input:focus {
+   border-color: #a3a3a3;
+}
+
+.search-button {
+   background-color: #f5f5f5;
+   border-radius: 50%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-left: 8px;
+   transition: background-color 0.3s, transform 0.3s;
+   padding: 8px;
+   height: 36px;
+   width: 36px;
+}
+
+.search-button:hover {
+   background-color: #e0e0e0;
+   transform: scale(1.1);
+}
+
+.mat-icon {
+   color: #666;
+}
+
+.tabs-container {
+   background-color: #003366;
+   padding: 10px 0;
+}
+
+.tabs {
+   display: flex;
+   justify-content: center;
+   gap: 20px;
+}
+
+button {
+   padding: 10px 20px;
+   border: none;
+   background: none;
+   color: white;
+   font-size: 16px;
+   font-weight: normal;
+   cursor: pointer;
+   transition: color 0.3s;
+}
+
+button.active {
+   color: #ff6600;
+}
+
+button:hover {
+   color: #ffcc00;
+   border-bottom: none;
+}
+
+.contents {
+   padding: 20px;
+   background-color: #f9f9f9;
+   border: 1px solid #ccc;
+   margin-top: 20px;
+}

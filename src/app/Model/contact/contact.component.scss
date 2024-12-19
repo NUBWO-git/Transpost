@@ -1,0 +1,129 @@
+.contact-container {
+   display: flex;
+   flex-direction: row; /* เรียงองค์ประกอบในแนวนอน */
+   justify-content: space-between; /* ให้แต่ละส่วนห่างกัน */
+   align-items: flex-start; /* จัดให้แต่ละส่วนชิดด้านบน */
+   padding: 40px;
+   background-color: #fff;
+   margin-bottom: 30px;
+}
+
+.text-section {
+   flex: 1;
+   padding-right: 20px;
+}
+
+.text-section h1 {
+   font-size: 36px;
+   color: #333;
+   margin-bottom: 20px;
+}
+
+.text-section p {
+   font-size: 16px;
+   color: #666;
+   line-height: 1.5;
+   margin-bottom: 15px;
+}
+
+.contact-info-section {
+   display: flex;
+   flex-direction: column; /* เรียง contact-item ในแนวตั้ง */
+   gap: 20px; /* ระยะห่างระหว่าง contact-item */
+   flex: 1; /* ทำให้ contact-info-section ขยายเต็มที่ */
+}
+
+.contact-item {
+   display: flex;
+   align-items: center; /* จัดให้ <h2> กับ <p> ติดกัน */
+   gap: 10px; /* ระยะห่างระหว่าง <h2> กับ <p> */
+}
+
+.contact-item h2 {
+   font-size: 16px;
+   margin: 0; /* เอาค่ามาร์จินออกเพื่อให้ติดกัน */
+   color: #333;
+}
+
+.contact-item p {
+   font-size: 14px;
+   margin: 0; /* เอาค่ามาร์จินออกเพื่อให้ติดกัน */
+   color: #666;
+}
+
+.contact-button {
+   display: flex;
+   justify-content: center; /* จัดตำแหน่งปุ่มให้อยู่กลาง */
+   margin-top: 20px; /* เพิ่มช่องว่างระหว่างปุ่มกับข้อความด้านบน */
+}
+
+.custom-button {
+   background-color: #003366;
+   color: #FF6600;
+   font-size: 30px;
+   font-weight: 500;
+   border: none;
+   border-radius: 20px;
+   padding: 20px 30px;
+   cursor: pointer;
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+   transition: all 0.3s ease;
+}
+
+.custom-button:hover {
+   background-color: #0056b3;
+   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+   transform: translateY(-2px);
+}
+
+.container {
+   display: flex;
+   flex-direction: row; 
+   justify-content: space-between; 
+   align-items: flex-start; 
+   padding: 40px;
+   background-color: #fff;
+   margin-bottom: 30px;
+   background-color: #71b2f4; 
+}
+
+.text h1 {
+   font-size: 14px;
+   margin-bottom: 10px;
+   color: #333;
+}
+
+.text p {
+   font-size: 14px;
+   margin-bottom: 8px;
+   color: #666;
+}
+
+.text img {
+   max-width: 50%;
+   height: auto;
+   display: block;
+   margin-top: 1px;
+}
+
+.container-1{
+   display: flex;
+   flex-direction: row; /* เรียงองค์ประกอบในแนวนอน */
+   justify-content: space-between; /* ให้แต่ละส่วนห่างกัน */
+   align-items: flex-start; /* จัดให้แต่ละส่วนชิดด้านบน */
+   padding: 40px;
+   background-color: #abcff3; 
+   padding: 20px; 
+   margin-bottom: 20px; 
+   color: #fff; 
+}
+.copyright {
+   position: fixed;
+   bottom: 0;
+   left: 0;
+   width: 100%;
+   text-align: center; 
+   color: #fff; 
+   padding: 10px 0; 
+
+}

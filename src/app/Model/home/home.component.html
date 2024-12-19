@@ -1,0 +1,33 @@
+<mat-toolbar class="toolbar">
+   <span class="example-spacer"></span>
+   <input type="text" placeholder="ค้นหา..." class="search-input" />
+   <button mat-icon-button class="search-button" aria-label="Search">
+      <mat-icon>search</mat-icon>
+   </button>
+</mat-toolbar>
+
+<div class="tabs-container">
+   <div class="tabs">
+
+      <button (click)="activeTab = 0" [routerLink]="['/welcome_Transpost', 'homepage']" [class.active]="activeTab === 0">หน้าหลัก</button>
+      <button (click)="activeTab = 1" [routerLink]="['/welcome_Transpost', 'about']" [class.active]="activeTab === 1">เกี่ยวกับ</button>
+      <button (click)="activeTab = 2" [routerLink]="['/welcome_Transpost', 'services']" [class.active]="activeTab === 2">บริการ</button>
+      <button (click)="activeTab = 3" [routerLink]="['/welcome_Transpost', 'contact']" [class.active]="activeTab === 3">ติดต่อเรา</button>
+   </div>
+</div>
+
+<div class="contents">
+   <div *ngIf="activeTab === 0">
+      <app-home-page></app-home-page>
+   </div>
+   <div *ngIf="activeTab === 1">
+      <app-about></app-about>
+   </div>
+   <div *ngIf="activeTab === 2">
+      <app-service></app-service>
+   </div>
+   <div *ngIf="activeTab === 3">
+      <app-contact></app-contact>
+   </div>
+</div>
+

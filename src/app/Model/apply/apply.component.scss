@@ -1,0 +1,201 @@
+.container {
+   max-width: 900px;
+   margin: 0 auto;
+   padding: 30px;
+   font-family: Arial, sans-serif;
+}
+
+.header {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-bottom: 20px;
+}
+
+.header h2 {
+   font-size: 24px;
+   font-weight: normal;
+}
+
+.links {
+   font-size: 14px;
+}
+
+.navigation-links .main-link {
+   color: #6c757d;
+   /* สีเทา */
+   text-decoration: none;
+   cursor: pointer;
+}
+
+.navigation-links .main-link:hover {
+   text-decoration: underline;
+}
+
+/* สไตล์สำหรับลิงก์ "สมัครสมาชิก" */
+.navigation-links .register-link {
+   color: #FF6600;
+   /* สีส้ม */
+   text-decoration: none;
+   cursor: pointer;
+}
+
+.navigation-links .register-link:hover {
+   text-decoration: underline;
+}
+
+$primary-color: #547ab7;
+$highlight-color: #FF6600;
+
+.form-container {
+   max-width: 600px; 
+   margin: 30px auto; 
+   background: #f9f9f9; 
+   padding: 25px;
+   border-radius: 10px; 
+   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); 
+}
+
+.form-group {
+   margin-bottom: 15px;
+}
+
+label {
+   display: block;
+   margin-bottom: 5px;
+   font-weight: bold;
+   color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+   width: 100%;
+   padding: 10px;
+   font-size: 14px;
+   border: 1px solid #ddd;
+   border-radius: 5px;
+   box-sizing: border-box;
+}
+
+.hint {
+   font-size: 12px;
+   color: #666;
+   margin-top: 5px;
+}
+
+.otp-btn {
+   flex: 1;
+   background-color: #003366; /* สีพื้นหลัง */
+   color: #fff !important; /* เพิ่ม !important เพื่อให้สีข้อความมีผลแน่นอน */
+   border: none;
+   padding: 10px;
+   border-radius: 5px;
+   cursor: pointer;
+   margin-bottom: 15px; /* เพิ่มระยะห่างด้านล่าง */
+   font-size: 16px; /* ขนาดตัวอักษร */
+   text-align: center; /* จัดข้อความให้อยู่กลางปุ่ม */
+}
+
+.otp-group input {
+   width: 100%; /* กำหนดให้ช่องกรอกเต็มบรรทัด */
+   padding: 10px;
+   font-size: 14px;
+   border: 1px solid #ddd;
+   border-radius: 5px;
+   box-sizing: border-box;
+   outline: none; /* ลบกรอบเมื่อช่องกรอกถูกเลือก */
+   transition: border-color 0.3s, box-shadow 0.3s; /* เพิ่มเอฟเฟกต์การเปลี่ยนสีขอบ */
+}
+
+/* ปรับการแสดงผลเมื่อช่องกรอกถูกเลือก */
+.otp-group input:focus {
+   border-color: #003366; /* เปลี่ยนสีขอบเป็นสีน้ำเงิน */
+   box-shadow: 0 0 5px #003366; /* เพิ่มเงารอบช่องกรอก */
+}
+
+.otp-btn {
+   background-color: #003366; /* ใช้สีหลัก */
+   color: #fff;
+   border: none;
+   padding: 15px;
+   border-radius: 5px;
+   font-size: 16px;
+   cursor: pointer;
+   text-align: center;
+   transition: background-color 0.3s;
+   &:hover {
+      background-color: darken(#003366, 10%); /* เปลี่ยนสีเมื่อ hover */
+   }
+
+   &.full-width {
+      width: 100%; /* ทำให้ปุ่มมีความกว้างเต็ม */
+   }
+}
+
+.otp-btn:hover {
+   background-color: darken(#003366, 10%);
+}
+
+.terms {
+   display: flex; /* จัดให้อยู่ในแนวนอน */
+   align-items: center; /* จัดให้อยู่ในแนวกลาง */
+   gap: 10px; /* ระยะห่างระหว่าง checkbox และข้อความ */
+
+   input {
+      margin: 0; /* ลบ margin เริ่มต้นของ checkbox */
+   }
+
+   label {
+      display: flex; /* จัดข้อความและลิงก์ในแนวนอน */
+      align-items: center; /* จัดให้อยู่กึ่งกลางในแนวตั้ง */
+      gap: 5px; /* ระยะห่างระหว่างข้อความและลิงก์ */
+      flex-wrap: nowrap; /* ไม่อนุญาตให้ข้อความขึ้นบรรทัดใหม่ */
+      font-weight: normal; /* ปรับน้ำหนักตัวอักษรเป็นปกติ (ไม่หนา) */
+      color: #333; /* ใช้สีเทาเข้มเพื่อความชัดเจน */
+   }
+
+   a {
+      color: $highlight-color; /* ใช้สีของลิงก์ */
+      text-decoration: none;
+      font-weight: normal; /* น้ำหนักตัวอักษรของลิงก์ */
+   }
+
+   a:hover {
+      text-decoration: underline; /* เส้นใต้เมื่อ hover */
+   }
+}
+
+.terms input {
+   margin-right: 5px;
+}
+
+.submit-btn {
+   width: 100%;
+   background-color: #003366;
+   color: #fff;
+   border: none;
+   padding: 15px;
+   border-radius: 5px;
+   font-size: 16px;
+   cursor: pointer;
+}
+
+.submit-btn:hover {
+   background-color: darken(#003366, 10%);
+}
+
+.form-section {
+   flex: 1;
+   text-align: center;
+   padding: 0 20px;
+}
+
+.form-section h3 {
+   font-size: 20px;
+   margin-bottom: 20px;
+}
+
+.form-section h3 span {
+   color: #FF6600;
+}
