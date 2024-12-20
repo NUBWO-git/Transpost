@@ -35,6 +35,7 @@ export class ApplyComponent {
   otpSent: boolean = false;
   otpValid: boolean = false;
   isSendingOtp: boolean = false;
+  sentOtp: string = ''; 
 
   constructor(
     private userService: userservice,
@@ -64,6 +65,12 @@ export class ApplyComponent {
   
     if (!this.otpSent) {
       this.snackBar.open('กรุณาขอ OTP ก่อน', '', { duration: 3000 });
+      return;
+    }
+
+    // ตรวจสอบ OTP ว่าตรงกับที่ส่งไปหรือไม่
+    if (this.otp !== this.sentOtp) {
+      this.snackBar.open('OTP ไม่ตรงกับที่ส่งไป', '', { duration: 3000 });
       return;
     }
   
@@ -103,50 +110,52 @@ export class ApplyComponent {
 
   // ฟังก์ชันขอ OTP
   requestOtp() {
-    if (!this.email) {
-      this.snackBar.open('กรุณากรอกอีเมลก่อนขอ OTP', '', { duration: 3000 });
+    if (!this.username || !this.email || !this.password) {
+      this.snackBar.open('กรุณากรอกชื่อผู้ใช้ อีเมล และรหัสผ่านก่อนขอ OTP', '', { duration: 3000 });
       return;
     }
-
-    this.userService.sendOtp(this.email).subscribe({
+    this.isSendingOtp = true;
+    this.userService.sendOtp(this.username, this.email, this.password).subscribe({
       next: (response) => {
+        this.isSendingOtp = false;
         if (response && response.status === 'success') {
           this.snackBar.open('OTP ถูกส่งไปยังอีเมลแล้ว', '', { duration: 3000 });
           this.otpSent = true;
+          this.sentOtp = response.data?.otp; // รับ OTP จาก response ที่ส่งกลับมา
         } else {
-          this.snackBar.open('ไม่สามารถส่ง OTP ได้', '', { duration: 3000 });
+          this.snackBar.open(response.message || 'ไม่สามารถส่ง OTP ได้', '', { duration: 3000 });
         }
       },
-      error: (error) => {
-        console.error(error);
+      error: (error: any) => {
+        this.isSendingOtp = false;
+        console.error('เกิดข้อผิดพลาดในการขอ OTP:', error);
         this.snackBar.open('เกิดข้อผิดพลาดในการขอ OTP', '', { duration: 3000 });
       }
     });
-  }
+  }  
 
   // ฟังก์ชันตรวจสอบ OTP
   verifyOtp() {
-    if (!this.otp) {
-      this.snackBar.open('กรุณากรอก OTP', '', { duration: 3000 });
+    if (!this.email || !this.otp) {
+      this.snackBar.open('กรุณากรอก OTP และอีเมล', '', { duration: 3000 });
       return;
     }
 
-    this.userService.verifyOtp(this.otp).subscribe({
+    this.userService.verifyOtp(this.email, this.otp).subscribe({
       next: (response) => {
-        if (response && response.status === 'success') {
-          this.snackBar.open('OTP ถูกต้อง', '', { duration: 3000 });
-          this.otpValid = true;
-        } else {
-          this.snackBar.open('OTP ไม่ถูกต้อง', '', { duration: 3000 });
-          this.otpValid = false;
-        }
+          if (response && response.status === 'success') {
+            this.snackBar.open('OTP ถูกต้อง', '', { duration: 3000 });
+            this.otpValid = true;
+          } else {
+            this.snackBar.open(response.message || 'OTP หรืออีเมลไม่ถูกต้อง', '', { duration: 3000 });
+            this.otpValid = false;
+          }
       },
       error: (error) => {
-        console.error(error);
-        this.snackBar.open('เกิดข้อผิดพลาดในการตรวจสอบ OTP', '', { duration: 3000 });
+          this.snackBar.open('เกิดข้อผิดพลาดในการตรวจสอบ OTP', '', { duration: 3000 });
       }
     });
-  }
+}
 
   // ฟังก์ชันเปิด Dialog
   openDialog() {

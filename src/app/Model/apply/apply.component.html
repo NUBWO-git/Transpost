@@ -48,7 +48,7 @@
             </label>
          </div>
       
-         <button type="submit" class="submit-btn" [disabled]="!registerForm.valid || !otpValid || !termsAccepted">สมัครสมาชิก</button>
+         <button type="submit" class="submit-btn" [disabled]="!registerForm.valid || !otpValid || !termsAccepted" (click)="verifyOtp()">สมัครสมาชิก</button>
       </form>
    </div>
 </div>

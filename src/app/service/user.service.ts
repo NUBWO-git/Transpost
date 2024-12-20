@@ -24,19 +24,23 @@ export class userservice {
    }
 
    // ฟังก์ชันสำหรับการขอ OTP
-   sendOtp(email: string): Observable<any> {
+   sendOtp( username: string, email: string, password: string ): Observable<any> {
+      console.log('Payload for sendOtp:'); // ตรวจสอบ payload
       return this.http.post(this.apiUrl, {
          action: 'sendOtp',
+         username: username,
          email: email,
+         password: password,
       }).pipe(
          catchError(this.handleError)
       );
-   }
+   }        
 
    // ฟังก์ชันสำหรับการตรวจสอบ OTP
-   verifyOtp(otp: string): Observable<any> {
+   verifyOtp(email: string, otp: string): Observable<any> {
       return this.http.post(this.apiUrl, {
          action: 'verifyOtp',
+         email: email,
          otp: otp,
       }).pipe(
          catchError(this.handleError)
