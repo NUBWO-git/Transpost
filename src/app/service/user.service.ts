@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
    providedIn: 'root',
@@ -24,17 +24,15 @@ export class userservice {
    }
 
    // ฟังก์ชันสำหรับการขอ OTP
-   sendOtp( username: string, email: string, password: string ): Observable<any> {
-      console.log('Payload for sendOtp:'); // ตรวจสอบ payload
-      return this.http.post(this.apiUrl, {
-         action: 'sendOtp',
-         username: username,
-         email: email,
-         password: password,
-      }).pipe(
-         catchError(this.handleError)
+   sendOtp(username: string, email: string, password: string): Observable<any> {
+      const payload = { action: 'sendOtp', username, email, password };
+      return this.http.post(this.apiUrl, payload, { responseType: 'json' }).pipe(
+         catchError((error) => {
+            console.error('Error in sendOtp:', error);
+            throw new Error('เกิดข้อผิดพลาดในการส่ง OTP');
+         })
       );
-   }        
+   }    
 
    // ฟังก์ชันสำหรับการตรวจสอบ OTP
    verifyOtp(email: string, otp: string): Observable<any> {

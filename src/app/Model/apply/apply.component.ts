@@ -114,25 +114,39 @@ export class ApplyComponent {
       this.snackBar.open('กรุณากรอกชื่อผู้ใช้ อีเมล และรหัสผ่านก่อนขอ OTP', '', { duration: 3000 });
       return;
     }
+  
     this.isSendingOtp = true;
     this.userService.sendOtp(this.username, this.email, this.password).subscribe({
-      next: (response) => {
-        this.isSendingOtp = false;
-        if (response && response.status === 'success') {
-          this.snackBar.open('OTP ถูกส่งไปยังอีเมลแล้ว', '', { duration: 3000 });
-          this.otpSent = true;
-          this.sentOtp = response.data?.otp; // รับ OTP จาก response ที่ส่งกลับมา
-        } else {
-          this.snackBar.open(response.message || 'ไม่สามารถส่ง OTP ได้', '', { duration: 3000 });
+      next: (response: string) => {
+        try {
+          // ตรวจสอบว่า response เป็น JSON หรือไม่
+          if (response.startsWith('{') || response.startsWith('[')) {
+            const jsonResponse = JSON.parse(response); // แปลงข้อความเป็น JSON
+            console.log('Response:', jsonResponse); // Debug JSON
+            this.isSendingOtp = false;
+            if (jsonResponse.status === 'success') {
+              this.snackBar.open('OTP ถูกส่งไปยังอีเมลแล้ว', '', { duration: 3000 });
+              this.otpSent = true;
+              this.sentOtp = jsonResponse.data?.otp;
+            } else {
+              this.snackBar.open(jsonResponse.message || 'ไม่สามารถส่ง OTP ได้', '', { duration: 3000 });
+            }
+          } else {
+            // ถ้า response ไม่ใช่ JSON ให้แสดงข้อผิดพลาด
+            this.snackBar.open('ได้รับข้อมูลที่ไม่สามารถประมวลผลได้', '', { duration: 3000 });
+          }
+        } catch (error) {
+          console.error('JSON Parsing Error:', error);
+          this.snackBar.open('เกิดข้อผิดพลาดในการประมวลผลข้อมูล', '', { duration: 3000 });
         }
       },
       error: (error: any) => {
         this.isSendingOtp = false;
-        console.error('เกิดข้อผิดพลาดในการขอ OTP:', error);
+        console.error('Error Response:', error);
         this.snackBar.open('เกิดข้อผิดพลาดในการขอ OTP', '', { duration: 3000 });
       }
     });
-  }  
+  }    
 
   // ฟังก์ชันตรวจสอบ OTP
   verifyOtp() {
