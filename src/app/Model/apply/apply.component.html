@@ -42,13 +42,17 @@
             <input type="checkbox" id="terms" name="terms" [(ngModel)]="termsAccepted" required />
             <label for="terms">
                <span>ข้าพเจ้าอ่าน และยอมรับ</span>
-               <a href="#">ข้อตกลงการใช้บริการ</a>
+               <a routerLink="/terms" class="terms-link">ข้อตกลงการใช้บริการ</a>
                <span>และ</span>
-               <a href="#" (click)="openDialog(); $event.preventDefault()">นโยบายความเป็นส่วนตัว</a>
+               <a href="#" (click)="openDialog(); $event.preventDefault()" class="privacy-policy-link">นโยบายความเป็นส่วนตัว</a>
             </label>
          </div>
       
-         <button type="submit" class="submit-btn" [disabled]="!registerForm.valid || !otpValid || !termsAccepted" (click)="verifyOtp()">สมัครสมาชิก</button>
+         <form (ngSubmit)="register()" #registerForm="ngForm">
+            <button type="submit" class="submit-btn" 
+                     [disabled]="!registerForm.valid || !otpValid || !termsAccepted" 
+                     (click)="verifyOtp('verifyOtp')">สมัครสมาชิก</button>
+         </form>
       </form>
    </div>
 </div>

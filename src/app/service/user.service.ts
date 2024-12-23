@@ -11,10 +11,15 @@ export class userservice {
 
    constructor(private http: HttpClient) {}
 
+   register(data: any) {
+      const url = 'http://localhost/transpost/transpost.php';
+      return this.http.post(url, data);
+   }
+
    // ฟังก์ชันสำหรับการสมัครสมาชิก
    regis(username: string, email: string, password: string): Observable<any> {
       return this.http.post(this.apiUrl, {
-         action: 'register',
+         action: 'register', // เปลี่ยน action ให้ตรงกับที่ PHP คาดหวัง
          username: username,
          email: email,
          password: password,
@@ -25,19 +30,19 @@ export class userservice {
 
    // ฟังก์ชันสำหรับการขอ OTP
    sendOtp(username: string, email: string, password: string): Observable<any> {
-      const payload = { action: 'sendOtp', username, email, password };
+      const payload = { action: 'sendOtp', username, email, password }; // ใช้ username แทน name
       return this.http.post(this.apiUrl, payload, { responseType: 'json' }).pipe(
          catchError((error) => {
             console.error('Error in sendOtp:', error);
             throw new Error('เกิดข้อผิดพลาดในการส่ง OTP');
          })
       );
-   }    
+   }   
 
    // ฟังก์ชันสำหรับการตรวจสอบ OTP
-   verifyOtp(email: string, otp: string): Observable<any> {
+   verifyOtp(email: string, otp: string, action: string): Observable<any> {
       return this.http.post(this.apiUrl, {
-         action: 'verifyOtp',
+         action: action,
          email: email,
          otp: otp,
       }).pipe(
