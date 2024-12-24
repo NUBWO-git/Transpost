@@ -48,11 +48,7 @@
             </label>
          </div>
       
-         <form (ngSubmit)="register()" #registerForm="ngForm">
-            <button type="submit" class="submit-btn" 
-                     [disabled]="!registerForm.valid || !otpValid || !termsAccepted" 
-                     (click)="verifyOtp('verifyOtp')">สมัครสมาชิก</button>
-         </form>
+         <button type="button" class="submit-btn" [disabled]="!registerForm.valid || !otpValid || !termsAccepted" (click)="register()">สมัครสมาชิก</button>
       </form>
    </div>
 </div>

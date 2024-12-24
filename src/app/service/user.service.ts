@@ -11,19 +11,21 @@ export class userservice {
 
    constructor(private http: HttpClient) {}
 
-   register(data: any) {
+   // ฟังก์ชันที่คืนค่า Observable
+   register(data: any): Observable<any> {
       const url = 'http://localhost/transpost/transpost.php';
       return this.http.post(url, data);
    }
 
    // ฟังก์ชันสำหรับการสมัครสมาชิก
    regis(username: string, email: string, password: string): Observable<any> {
-      return this.http.post(this.apiUrl, {
+      const payload = {
          action: 'register', // เปลี่ยน action ให้ตรงกับที่ PHP คาดหวัง
          username: username,
          email: email,
          password: password,
-      }).pipe(
+      };
+      return this.http.post(this.apiUrl, payload).pipe(
          catchError(this.handleError)
       );
    }
@@ -37,15 +39,18 @@ export class userservice {
             throw new Error('เกิดข้อผิดพลาดในการส่ง OTP');
          })
       );
-   }   
+   }
 
    // ฟังก์ชันสำหรับการตรวจสอบ OTP
-   verifyOtp(email: string, otp: string, action: string): Observable<any> {
-      return this.http.post(this.apiUrl, {
+   verifyOtp(email: string, otp: string, username: string, password: string, action: string): Observable<any> {
+      const payload = {
          action: action,
          email: email,
          otp: otp,
-      }).pipe(
+         username: username,
+         password: password,
+      };
+      return this.http.post(this.apiUrl, payload).pipe(
          catchError(this.handleError)
       );
    }
@@ -58,6 +63,7 @@ export class userservice {
       } else {
          errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
       }
-      return throwError(() => new Error(errorMessage));
+      console.error(errorMessage);  // แสดงข้อผิดพลาดในคอนโซล
+      return throwError(() => new Error(errorMessage));  // ส่งข้อผิดพลาดกลับไปยัง caller
    }
 }
