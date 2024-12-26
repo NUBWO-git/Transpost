@@ -22,7 +22,7 @@ import { BrowserModule } from '@angular/platform-browser';
     AboutComponent,
     HttpClientModule,
     BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
   ],
   providers: [
     provideHttpClient(withFetch())  

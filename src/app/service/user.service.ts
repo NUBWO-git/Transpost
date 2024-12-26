@@ -1,26 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
    providedIn: 'root',
 })
-export class userservice {
+export class UserService {
    private apiUrl = 'http://localhost/transpost/transpost.php';
 
    constructor(private http: HttpClient) {}
 
    // ฟังก์ชันที่คืนค่า Observable
-   register(data: any): Observable<any> {
-      const url = 'http://localhost/transpost/transpost.php';
-      return this.http.post(url, data);
-   }
-
-   // ฟังก์ชันสำหรับการสมัครสมาชิก
-   regis(username: string, email: string, password: string): Observable<any> {
+   register(username: string, email: string, password: string): Observable<any> {
       const payload = {
-         action: 'register', // เปลี่ยน action ให้ตรงกับที่ PHP คาดหวัง
+         action: 'sendOtp',  // ใช้ 'sendOtp' สำหรับการขอ OTP
          username: username,
          email: email,
          password: password,
@@ -32,7 +26,7 @@ export class userservice {
 
    // ฟังก์ชันสำหรับการขอ OTP
    sendOtp(username: string, email: string, password: string): Observable<any> {
-      const payload = { action: 'sendOtp', username, email, password }; // ใช้ username แทน name
+      const payload = { action: 'sendOtp', username, email, password };
       return this.http.post(this.apiUrl, payload, { responseType: 'json' }).pipe(
          catchError((error) => {
             console.error('Error in sendOtp:', error);
