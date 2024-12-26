@@ -40,14 +40,14 @@ export class UserService {
       const payload = {
          action: action,
          email: email,
-         otp: otp,
+         otp: otp, // OTP ที่ผู้ใช้กรอก
          username: username,
-         password: password,
+         password: password
       };
       return this.http.post(this.apiUrl, payload).pipe(
          catchError(this.handleError)
       );
-   }
+   }   
 
    // ฟังก์ชันจัดการข้อผิดพลาด
    private handleError(error: any) {
